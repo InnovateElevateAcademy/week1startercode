@@ -1,0 +1,6 @@
+public class HelloWorld{//declaring class as public so it can be accesed from outside the class
+
+     public static void main(String []args){
+        //Your code goes here
+     }
+}
