@@ -1,1 +1,21 @@
+name: Java Hello World Test
+on: [push, pull_request]  # Run this test every time a student pushes code
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Use an Ubuntu virtual machine to run tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Download student's code from GitHub
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # Use Java 17 to compile and run the program
+
+      - name: Compile and Test
+        run: |
+          javac HelloWorld.java tests/HelloWorldTest.java  # Compile code
+          java -cp .:tests org.junit.platform.console.ConsoleLauncher --select-class HelloWorldTest  # Run the test
 
